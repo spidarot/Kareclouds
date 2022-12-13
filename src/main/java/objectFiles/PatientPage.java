@@ -313,9 +313,6 @@ public class PatientPage extends ObjectParentClass {
 		driver.switchTo().alert().dismiss();
 	}
 
-	public void deletePatient() {
-
-	}
 	
 	//Patient Tabel Sorting in ascending & descending order
 	

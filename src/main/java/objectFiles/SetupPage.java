@@ -24,8 +24,17 @@ public class SetupPage extends ObjectParentClass {
 	WebElement setupElement;
 	// patient dropdown
 	@FindBy(xpath = "//ul[@class='treeview-menu menu-open']//li[1]")
-	WebElement patientElement;
-
+	WebElement patientPageElement;
+	//hospital Charges dropdown
+	@FindBy(xpath="//a[contains(text(),' Hospital Charges')]")
+	WebElement hospitalChargesPageElement;
+	//Bed dropdown
+	@FindBy(xpath="//a[contains(text(),' Bed')]")
+	WebElement bedPageElement;
+	//Front Office dropdown
+	@FindBy(xpath="//a[contains(text(),' Front Office')]")
+	WebElement frontOfficePageElement;
+	
 	By patientElementBy = By.xpath("//ul[@class='treeview-menu menu-open']//li[1]");
 
 	public void setupClick() {
@@ -33,12 +42,35 @@ public class SetupPage extends ObjectParentClass {
 		setupElement.click();
 	}
 
-	public PatientPage LoadpatientPage() {
-		actions(patientElement);
+	public PatientPage loadPatientPage() {
+		actions(patientPageElement);
 		waits(patientElementBy);
-		patientElement.click();
+		patientPageElement.click();
 		PatientPage patient = new PatientPage(driver);
 		return patient;
 	}
+	
+	public HospitalChargesPage loadHospitalChargesPage() {
+		actions(hospitalChargesPageElement);
+		waitByElement(hospitalChargesPageElement);
+		hospitalChargesPageElement.click();
+		HospitalChargesPage hospitalCharges=new HospitalChargesPage(driver);
+		return hospitalCharges;
+	}
+	
+	public BedPage loadBedPage() {
+		actions(bedPageElement);
+		waitByElement(bedPageElement);
+		bedPageElement.click();
+		BedPage bed=new BedPage(driver);
+		return bed;
+	}
 
+	public FrontOfficePage loadFrontOfficePage() {
+		actions(frontOfficePageElement);
+		waitByElement(frontOfficePageElement);
+		frontOfficePageElement.click();
+		FrontOfficePage frontOffice=new FrontOfficePage(driver);
+		return frontOffice;
+	}
 }
