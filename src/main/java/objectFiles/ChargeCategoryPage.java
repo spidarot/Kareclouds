@@ -19,7 +19,9 @@ public class ChargeCategoryPage extends ObjectParentClass{
 		PageFactory.initElements(driver, this);
 	}
 
-	
+	//Title Text
+	@FindBy(xpath="//h3[@class='box-title titlefix']")
+	WebElement titleTextElement;
 	//Add Charge Category button
 	@FindBy(xpath="//a[contains(text(),' Add Charge Category')]")
 	WebElement addChargeCategoryButtonElement;
@@ -51,6 +53,12 @@ public class ChargeCategoryPage extends ObjectParentClass{
 	@FindBy(xpath="//table[@id='DataTables_Table_0']//a[contains(@onclick,'delete_recordById')]")
 	List<WebElement> deleteChargeCategoryButtonList;
 	
+	
+	public String titleTextGetText() {
+		waitByElement(titleTextElement);
+		String TitleText=titleTextElement.getText();
+		return TitleText;
+	}
 	public void addChargeCategoryButtonClick() {
 		waitByElement(addChargeCategoryButtonElement);
 		addChargeCategoryButtonElement.click();

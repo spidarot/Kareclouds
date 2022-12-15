@@ -19,6 +19,9 @@ public class DoctorOPDChargePage extends ObjectParentClass {
 		PageFactory.initElements(driver,this);
 	}
 	
+	//Title Text
+	@FindBy(xpath="//h3[@class='box-title titlefix']")
+	WebElement titleTextElement;
 	//Add Charge button
 	@FindBy(xpath="//a[contains(text(),' Add Charge')]")
 	WebElement addChargeButtonElement;
@@ -63,6 +66,12 @@ public class DoctorOPDChargePage extends ObjectParentClass {
 	@FindBy(xpath="//a[contains(@onclick,'delete_recordById')]")
 	List<WebElement> deleteChargeDetailsButtonList;
 	
+	
+	public String titleTextGetText() {
+		waitByElement(titleTextElement);
+		String TitleText=titleTextElement.getText();
+		return TitleText;
+	}
 	public void addChargeButtonClick() {
 		waitByElement(addChargeButtonElement);
 		addChargeButtonElement.click();

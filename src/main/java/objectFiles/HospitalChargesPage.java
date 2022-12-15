@@ -20,6 +20,9 @@ public class HospitalChargesPage extends ObjectParentClass {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	//Title Text
+	@FindBy(xpath="//h3[@class='box-title titlefix']")
+	WebElement titleTextElement;
 	//add charge Button
 	@FindBy(xpath="//a[@onclick=\"holdModal('myModal')\"]")
 	WebElement addChargeButtonElement;
@@ -77,17 +80,22 @@ public class HospitalChargesPage extends ObjectParentClass {
 	@FindBy(xpath="//a[contains(@onclick,'delete_recordById')]//i")
 	List<WebElement> deleteChargeButtonList;
 	
-	//charge Category link
+	//charge Category Page link
 	@FindBy(xpath="//a[contains(text(),'Charge Category')]")
-	WebElement chargeCategoryLinkElement;
+	WebElement chargeCategoryPageLinkElement;
 	//Doctor OPD Charge link
 	@FindBy(xpath="//a[contains(text(),'Doctor OPD Charge')]")
-	WebElement doctorOPDChargeLinkElement;
+	WebElement doctorOPDChargePageLinkElement;
 	//Charge Type link
 	@FindBy(xpath="//a[contains(text(),'Charge Type')]")
-	WebElement chargeTypeLinkElement;	
+	WebElement chargeTypePageLinkElement;	
 		
 		
+	public String titleTextGetText() {
+		waitByElement(titleTextElement);
+		String TitleText=titleTextElement.getText();
+		return TitleText;
+	}
 	public void addChargeButtonClick() {
 		waitByElement(addChargeButtonElement);
 		addChargeButtonElement.click();
@@ -164,17 +172,17 @@ public class HospitalChargesPage extends ObjectParentClass {
 	
 	
 	public ChargeCategoryPage loadChargeCategoryPage() {
-		chargeCategoryLinkElement.click();
+		chargeCategoryPageLinkElement.click();
 		ChargeCategoryPage chargeCategory =new ChargeCategoryPage(driver);
 		return chargeCategory;
 	}
 	public DoctorOPDChargePage loadDoctorOPDChargePage() {
-		doctorOPDChargeLinkElement.click();
+		doctorOPDChargePageLinkElement.click();
 		DoctorOPDChargePage doctorOPDCharge =new DoctorOPDChargePage(driver);
 		return doctorOPDCharge;
 	}
 	public ChargeTypePage loadChargeTypePage() {
-		chargeTypeLinkElement.click();
+		chargeTypePageLinkElement.click();
 		ChargeTypePage chargeType= new ChargeTypePage(driver);
 		return chargeType;
 }

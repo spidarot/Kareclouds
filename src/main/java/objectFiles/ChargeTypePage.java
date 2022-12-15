@@ -19,6 +19,9 @@ public class ChargeTypePage extends ObjectParentClass {
 		PageFactory.initElements(driver,this);
 	}
 	
+	//Title Text
+	@FindBy(xpath="//h3[@class='box-title titlefix']")
+	WebElement titleTextElement;
 	//add Charge Type Button
 	@FindBy(xpath="//a[contains(text(),' Add Charge Type')]")
 	WebElement addChargeTypeButtonElement;
@@ -39,6 +42,11 @@ public class ChargeTypePage extends ObjectParentClass {
 	List<WebElement> deleteChargeTypeButtonList;
 	
 	
+	public String titleTextGetText() {
+		waitByElement(titleTextElement);
+		String TitleText=titleTextElement.getText();
+		return TitleText;
+	}
 	public void addChargeTypeButtonClick() {
 		waitByElement(addChargeTypeButtonElement);
 		addChargeTypeButtonElement.click();
