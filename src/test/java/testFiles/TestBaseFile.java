@@ -78,9 +78,9 @@ public LoginPage launchApplicatio() throws InterruptedException, IOException {
 	return login;
 }
 
-@AfterTest
-public void tearDown() {
-driver.quit();
-}
+//@AfterTest
+//public void tearDown() {
+//driver.quit();
+//}
 
 }
